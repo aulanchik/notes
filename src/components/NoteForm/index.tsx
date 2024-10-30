@@ -57,18 +57,32 @@ const NoteForm: React.FC<NoteFormProps> = ({
   };
 
   return (
-    <form onSubmit={handleSubmit}>
+    <form
+      onSubmit={handleSubmit}
+      className="space-y-4 rounded-lg p-4 mb-4 gap-4"
+    >
+      <p className="text-3xl font-bold text-center">Note List</p>
       <input
+        value={title}
         placeholder="Title"
         onChange={(e) => setTitle(e.target.value)}
-        value={title}
+        className="w-full border border-gray-300 rounded-lg p-2 focus:outline-none focus:border-blue-500 transition duration-200"
+        required
       />
       <textarea
         value={content}
         onChange={(e) => setContent(e.target.value)}
         placeholder="Content"
+        className="w-full border border-gray-300 rounded-lg p-2 focus:outline-none focus:border-blue-500 transition duration-200"
+        rows={4}
+        required
       />
-      <button type="submit">{currentNote ? "Update Note" : "Add Note"}</button>
+      <button
+        type="submit"
+        className="w-full bg-blue-500 text-white rounded-lg p-2 hover:bg-blue-600 transition duration-200"
+      >
+        {currentNote ? "Update Note" : "Add Note"}
+      </button>
     </form>
   );
 };
